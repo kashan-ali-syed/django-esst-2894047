@@ -1,10 +1,14 @@
-<html>
-    <h1>These are the notes</h1>
-    <ul>
-        {% for note in notes %}
-            <li>
-                {{ note.title }} - {{ note.content }}
-            </li>
-        {% endfor %}
-    </ul>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>These are the notes</h1>
+<ul>
+    {% for note in notes %}
+        <li class="note-item">
+            {{ note.title }} - {{ note.content }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,10 @@
+<html>
+    <h1>These are the notes with one or more likes</h1>
+    <ul>
+        {% for note in notes|dictsortreversed:"likes" %}
+            <li>
+                {{ note.title }} - {{ note.content }} ({{ note.likes }} likes)
+            </li>
+        {% endfor %}
+    </ul>
+</html>
