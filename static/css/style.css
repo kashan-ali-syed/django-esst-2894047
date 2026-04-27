@@ -6,3 +6,7 @@
     background-color: #b4c3b9;
     color: #631010;
 }
+ul.errorlist {
+    color: red;
+    list-style-type: none;
+}

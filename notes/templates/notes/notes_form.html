@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST"> {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-primary my-5">{% if note %}Update Note{% else %}Create Note{% endif %}</button>
+</form>
+{% if form.errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for field in form %}
+            {% for error in field.errors %} 
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+
+{% endif %}
+<a href="{% url 'notes.list' %}" class="btn btn-secondary my-5">Cancel</a>
+
+{% endblock %}  

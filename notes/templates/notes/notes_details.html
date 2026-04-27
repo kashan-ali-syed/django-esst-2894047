@@ -1,5 +1,20 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="note-details">
     <h1>{{ note.title }}</h1>
-    <p>{{ note.text }}</p>
-</html>
+    <p>{{ note.content }}</p>
+</div>
+
+<a href="{% url 'notes.list' %}" class="btn btn-secondary my-5">Back to Notes List</a>
+<a href="{% url 'notes.update' pk=note.pk %}" class="btn btn-primary my-5">Edit Note</a>
+<a href="{% url 'notes.delete' pk=note.pk %}" class="btn btn-danger my-5">Delete Note</a>
+<form action="{% url 'notes.add_like' pk=note.pk %}" method="post" class="d-inline">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success my-5">
+        <i class="bi bi-hand-thumbs-up"></i> Like ({{ note.likes }})
+    </button>
+</form>
+{% endblock %}
