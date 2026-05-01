@@ -17,4 +17,15 @@
         <i class="bi bi-hand-thumbs-up"></i> Like ({{ note.likes }})
     </button>
 </form>
+<form action="{% url 'notes.change_visibility' pk=note.pk %}" method="post" class="d-inline">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-warning my-5">
+        <i class="bi bi-eye"></i> 
+            {% if note.is_public %}
+                Make Private
+            {% else %}
+                Make Public
+            {% endif %}
+    </button>
+</form>
 {% endblock %}

@@ -129,3 +129,5 @@ STATICFILES_DIRS = [
 IS_CODESPACES = os.environ.get("CODESPACES") == "true"
 if IS_CODESPACES:
     CSRF_TRUSTED_ORIGINS = [f"https://localhost:8000"]
+
+LOGIN_REDIRECT_URL = '/smart/notes/'

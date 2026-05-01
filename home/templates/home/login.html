@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% load static %} {% block title %}Login{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}" />
+<link rel="icon" href="{% static 'images/favicon.png' %}" />
+
+{% endblock %} {% block content %}
+<div class="content">
+  <main class="rectangle wrapper">
+    <div class="background-image"></div>
+    <div class="hero">
+      <img
+        src="{% static 'images/Sypher.png' %}"
+        class="logo"
+        alt="Sypher logo"
+      />
+
+      <form method="post" action="{% url 'home.login' %}" class="form-login">
+        {% csrf_token %}
+        <section class="form-section">
+          <div>
+            <label for="username">Username</label>
+            <input
+              id="username"
+              name="username"
+              class="form-control"
+              placeholder="username"
+            />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              class="form-control"
+              placeholder="Password"
+            />
+          </div>
+          <input type="hidden" name="next" value="{{ next }}" />
+        </section>
+        <section class="form-action flex-wrap">
+          <div class="login-btn-container">
+            <button class="button-signin" type="submit">Login</button>
+          </div>
+          {% if form.errors %}
+          <p class="text-error">
+            Your username and password didn't match. Please try again.
+          </p>
+          {% endif %}
+        </section>
+      </form>
+    </div>
+  </main>
+</div>
+{% endblock %}
